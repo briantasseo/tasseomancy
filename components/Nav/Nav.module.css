@@ -1,0 +1,64 @@
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: rgba(247, 245, 240, 0.75);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--rule);
+  transition: background var(--transition);
+}
+
+:global(html.night-mode) .nav {
+  background: rgba(18, 17, 24, 0.8);
+}
+
+.logo {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  letter-spacing: 0.06em;
+  color: var(--accent);
+  cursor: pointer;
+  user-select: none;
+  transition: opacity var(--transition);
+}
+
+.logo:hover {
+  opacity: 0.7;
+}
+
+.navLinks {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+
+.navLinks a {
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--fg-dim);
+  transition: color var(--transition);
+}
+
+.navLinks a:hover,
+.navLinks a:focus {
+  color: var(--accent);
+  outline: none;
+}
+
+.navLinks a:focus-visible {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+@media (max-width: 640px) {
+  .navLinks {
+    gap: 1.2rem;
+  }
+
+  .navLinks a {
+    font-size: 0.68rem;
+  }
+}

@@ -1,0 +1,21 @@
+.toast {
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  background: var(--accent);
+  color: #fff;
+  padding: 0.8rem 2rem;
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  border-radius: 100px;
+  opacity: 0;
+  transition: opacity var(--transition), transform var(--transition);
+  z-index: 2000;
+  box-shadow: 0 4px 20px var(--accent-glow);
+}
+
+.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}

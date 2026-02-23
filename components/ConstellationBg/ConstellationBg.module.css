@@ -1,0 +1,68 @@
+.constellationBg {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.3;
+  animation: drift 20s ease-in-out infinite alternate;
+}
+
+.orb1 {
+  width: 500px;
+  height: 500px;
+  background: var(--iridescent-1);
+  top: -10%;
+  left: -5%;
+  animation-delay: 0s;
+}
+
+.orb2 {
+  width: 400px;
+  height: 400px;
+  background: var(--iridescent-2);
+  top: 40%;
+  right: -8%;
+  animation-delay: -7s;
+}
+
+.orb3 {
+  width: 350px;
+  height: 350px;
+  background: var(--iridescent-3);
+  bottom: -5%;
+  left: 30%;
+  animation-delay: -14s;
+}
+
+.constellationSvg {
+  position: absolute;
+  inset: 0;
+  opacity: 0.12;
+}
+
+@keyframes drift {
+  0% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(30px, -20px) scale(1.05); }
+  66% { transform: translate(-20px, 30px) scale(0.95); }
+  100% { transform: translate(15px, 15px) scale(1.02); }
+}
+
+@media (max-width: 640px) {
+  .orb {
+    filter: blur(60px);
+    opacity: 0.2;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .constellationBg {
+    display: none;
+  }
+}

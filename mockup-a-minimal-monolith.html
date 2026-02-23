@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tasseomancy Studios</title>
+<style>
+/* ========== RESET & BASE ========== */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bg: #0a0a0a;
+  --fg: #e8e4df;
+  --fg-dim: #7a7672;
+  --accent: #c4b590;
+  --accent-dim: rgba(196, 181, 144, 0.15);
+  --rule: rgba(255,255,255,0.08);
+  --surface: #111110;
+  --radius: 2px;
+  --font-body: 'Segoe UI', ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-heading: Georgia, 'Times New Roman', serif;
+  --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+html.day-mode {
+  --bg: #f4f1ec;
+  --fg: #1a1918;
+  --fg-dim: #8a8580;
+  --accent: #8b7d5e;
+  --accent-dim: rgba(139, 125, 94, 0.12);
+  --rule: rgba(0,0,0,0.08);
+  --surface: #eae7e1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
+
+html { scroll-behavior: smooth; font-size: 16px; }
+body {
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--fg);
+  line-height: 1.6;
+  overflow-x: hidden;
+  transition: background var(--transition), color var(--transition);
+}
+
+/* Film grain overlay */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.035;
+  background-image:
+    repeating-radial-gradient(circle at 17% 32%, transparent 0, rgba(255,255,255,0.3) 1px, transparent 2px),
+    repeating-radial-gradient(circle at 63% 68%, transparent 0, rgba(255,255,255,0.2) 1px, transparent 3px),
+    repeating-radial-gradient(circle at 41% 12%, transparent 0, rgba(255,255,255,0.25) 1px, transparent 2px);
+  background-size: 3px 3px, 4px 4px, 2px 2px;
+}
+
+a { color: inherit; text-decoration: none; }
+button { font-family: inherit; cursor: pointer; border: none; background: none; }
+
+.container { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
+
+/* ========== NAV ========== */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: rgba(10,10,10,0.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--rule);
+  transition: background var(--transition);
+}
+html.day-mode nav { background: rgba(244,241,236,0.88); }
+
+nav .container {
+  display: flex; align-items: center; justify-content: space-between;
+  height: 64px;
+}
+
+.logo {
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+  cursor: pointer;
+  user-select: none;
+  transition: opacity var(--transition);
+}
+.logo:hover { opacity: 0.7; }
+
+.nav-links { display: flex; gap: 2rem; list-style: none; }
+.nav-links a {
+  font-size: 0.8rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--fg-dim);
+  transition: color var(--transition);
+  position: relative;
+}
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px; left: 0;
+  width: 0; height: 1px;
+  background: var(--accent);
+  transition: width var(--transition);
+}
+.nav-links a:hover, .nav-links a:focus { color: var(--fg); outline: none; }
+.nav-links a:hover::after, .nav-links a:focus::after { width: 100%; }
+
+/* ========== HERO ========== */
+.hero {
+  min-height: 100vh;
+  display: flex; align-items: center; justify-content: center;
+  text-align: center;
+  padding: 8rem 2rem 4rem;
+  position: relative;
+}
+
+.hero h1 {
+  font-family: var(--font-heading);
+  font-size: clamp(2.4rem, 6vw, 4.5rem);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  line-height: 1.15;
+  margin-bottom: 1.5rem;
+}
+
+.hero .supporting {
+  font-size: 1rem;
+  color: var(--fg-dim);
+  max-width: 420px;
+  margin: 0 auto 0.6rem;
+}
+
+.hero .micro {
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 2.5rem;
+}
+
+.hero-ctas { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+.btn-primary {
+  padding: 0.75rem 2.2rem;
+  background: var(--accent);
+  color: var(--bg);
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border-radius: var(--radius);
+  transition: opacity var(--transition), transform var(--transition);
+}
+.btn-primary:hover, .btn-primary:focus { opacity: 0.85; transform: translateY(-1px); outline: none; }
+.btn-primary:focus-visible { box-shadow: 0 0 0 2px var(--accent); }
+
+.btn-secondary {
+  padding: 0.75rem 2.2rem;
+  border: 1px solid var(--rule);
+  color: var(--fg-dim);
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border-radius: var(--radius);
+  transition: border-color var(--transition), color var(--transition);
+}
+.btn-secondary:hover, .btn-secondary:focus { border-color: var(--accent); color: var(--fg); outline: none; }
+.btn-secondary:focus-visible { box-shadow: 0 0 0 2px var(--accent); }
+
+/* ========== SECTIONS ========== */
+section { padding: 6rem 0; border-top: 1px solid var(--rule); }
+
+.section-label {
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--fg-dim);
+  margin-bottom: 3rem;
+}
+
+/* ========== WORKS ========== */
+.works-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1px;
+  background: var(--rule);
+}
+
+.work-card {
+  background: var(--bg);
+  padding: 2.5rem 2rem;
+  transition: background var(--transition);
+}
+.work-card:hover { background: var(--surface); }
+
+.work-card h3 {
+  font-family: var(--font-heading);
+  font-size: 1.3rem;
+  font-weight: 400;
+  margin-bottom: 0.5rem;
+}
+
+.work-card .mood {
+  font-size: 0.85rem;
+  color: var(--fg-dim);
+  margin-bottom: 1.5rem;
+}
+
+.work-card .details-link {
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  cursor: pointer;
+  transition: opacity var(--transition);
+}
+.work-card .details-link:hover, .work-card .details-link:focus { opacity: 0.7; outline: none; }
+
+/* ========== MANIFESTO ========== */
+.manifesto-list { list-style: none; counter-reset: manifesto; }
+.manifesto-list li {
+  counter-increment: manifesto;
+  padding: 2rem 0;
+  border-bottom: 1px solid var(--rule);
+  display: flex;
+  align-items: baseline;
+  gap: 1.5rem;
+  font-family: var(--font-heading);
+  font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+  font-style: italic;
+}
+.manifesto-list li::before {
+  content: counter(manifesto, decimal-leading-zero);
+  font-family: var(--font-body);
+  font-style: normal;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  color: var(--fg-dim);
+  flex-shrink: 0;
+}
+
+/* ========== CONTACT ========== */
+.contact-inner { max-width: 480px; }
+
+.form-field { margin-bottom: 1.5rem; }
+.form-field label {
+  display: block;
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--fg-dim);
+  margin-bottom: 0.5rem;
+}
+.form-field input, .form-field textarea {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--rule);
+  padding: 0.6rem 0;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--fg);
+  outline: none;
+  transition: border-color var(--transition);
+}
+.form-field input:focus, .form-field textarea:focus { border-color: var(--accent); }
+.form-field textarea { resize: vertical; min-height: 80px; }
+
+.privacy-note {
+  font-size: 0.72rem;
+  color: var(--fg-dim);
+  margin-bottom: 1.5rem;
+  line-height: 1.5;
+}
+
+.submit-btn {
+  padding: 0.75rem 2.5rem;
+  background: var(--accent);
+  color: var(--bg);
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border-radius: var(--radius);
+  transition: opacity var(--transition);
+}
+.submit-btn:hover, .submit-btn:focus { opacity: 0.85; outline: none; }
+.submit-btn:focus-visible { box-shadow: 0 0 0 2px var(--accent); }
+
+/* ========== FOOTER ========== */
+footer {
+  border-top: 1px solid var(--rule);
+  padding: 3rem 0;
+  text-align: center;
+}
+footer p { font-size: 0.75rem; color: var(--fg-dim); }
+footer .tagline { font-style: italic; margin-top: 0.3rem; font-family: var(--font-heading); }
+
+/* ========== MODAL ========== */
+.modal-overlay {
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,0.8);
+  z-index: 1000;
+  display: flex; align-items: center; justify-content: center;
+  padding: 2rem;
+  opacity: 0; visibility: hidden;
+  transition: opacity var(--transition), visibility var(--transition);
+}
+.modal-overlay.active { opacity: 1; visibility: visible; }
+
+.modal {
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  max-width: 520px; width: 100%;
+  padding: 3rem;
+  position: relative;
+  border-radius: var(--radius);
+  transform: translateY(10px);
+  transition: transform var(--transition);
+}
+.modal-overlay.active .modal { transform: translateY(0); }
+
+.modal-close {
+  position: absolute; top: 1rem; right: 1.2rem;
+  font-size: 1.2rem; color: var(--fg-dim);
+  transition: color var(--transition);
+}
+.modal-close:hover, .modal-close:focus { color: var(--fg); outline: none; }
+
+.modal h3 {
+  font-family: var(--font-heading);
+  font-size: 1.4rem;
+  font-weight: 400;
+  margin-bottom: 1.2rem;
+}
+
+.modal ul { list-style: none; margin-bottom: 2rem; }
+.modal ul li {
+  padding: 0.4rem 0;
+  font-size: 0.9rem;
+  color: var(--fg-dim);
+}
+.modal ul li::before { content: '— '; color: var(--accent); }
+
+/* Placeholder still frame */
+.still-frame {
+  width: 100%; height: 180px;
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+/* ========== TOAST ========== */
+.toast {
+  position: fixed;
+  bottom: 2rem; left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  background: var(--accent);
+  color: var(--bg);
+  padding: 0.8rem 2rem;
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  border-radius: var(--radius);
+  opacity: 0;
+  transition: opacity var(--transition), transform var(--transition);
+  z-index: 2000;
+}
+.toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+/* ========== MOBILE ========== */
+@media (max-width: 640px) {
+  .nav-links { gap: 1.2rem; }
+  .nav-links a { font-size: 0.7rem; }
+  section { padding: 4rem 0; }
+  .manifesto-list li { flex-direction: column; gap: 0.3rem; }
+  .modal { padding: 2rem; }
+}
+</style>
+</head>
+<body>
+<!-- NAV -->
+<nav>
+  <div class="container">
+    <div class="logo" role="button" tabindex="0" aria-label="Tasseomancy Studios — click to toggle theme">Tasseomancy Studios</div>
+    <ul class="nav-links">
+      <li><a href="#works">Works</a></li>
+      <li><a href="#manifesto">Manifesto</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div>
+    <h1>Films, read from the dark.</h1>
+    <p class="supporting">A small studio shaping cinematic ritual—quietly, precisely.</p>
+    <p class="micro">Limited slate. High conviction.</p>
+    <div class="hero-ctas">
+      <a href="#contact" class="btn-primary">Inquire</a>
+      <a href="#works" class="btn-secondary">View works</a>
+    </div>
+  </div>
+</section>
+
+<!-- WORKS -->
+<section id="works">
+  <div class="container">
+    <p class="section-label">Selected Works</p>
+    <div class="works-grid">
+      <article class="work-card">
+        <h3>The Veil Sequence</h3>
+        <p class="mood">Dread as devotion. A fever dream in three acts.</p>
+        <button class="details-link" data-modal="0" aria-haspopup="dialog">Details</button>
+      </article>
+      <article class="work-card">
+        <h3>Lumen / Lacuna</h3>
+        <p class="mood">Light as absence. A quiet collapse between strangers.</p>
+        <button class="details-link" data-modal="1" aria-haspopup="dialog">Details</button>
+      </article>
+      <article class="work-card">
+        <h3>Residuum</h3>
+        <p class="mood">What remains when the story refuses to end.</p>
+        <button class="details-link" data-modal="2" aria-haspopup="dialog">Details</button>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- MANIFESTO -->
+<section id="manifesto">
+  <div class="container">
+    <p class="section-label">Manifesto</p>
+    <ol class="manifesto-list">
+      <li>Mystery is a feature, not a bug.</li>
+      <li>Mood before exposition.</li>
+      <li>Every frame should feel inevitable.</li>
+    </ol>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <p class="section-label">Contact</p>
+    <div class="contact-inner">
+      <form id="contactForm" novalidate>
+        <div class="form-field">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" required aria-label="Your name">
+        </div>
+        <div class="form-field">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required aria-label="Your email address">
+        </div>
+        <div class="form-field">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="3" required aria-label="Your message"></textarea>
+        </div>
+        <p class="privacy-note">Your information is held in confidence and used solely to respond to your inquiry.</p>
+        <button type="submit" class="submit-btn">Send</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <p>&copy; 2025 Tasseomancy Studios</p>
+    <p class="tagline">What you see depends on how you look.</p>
+  </div>
+</footer>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modalOverlay" role="dialog" aria-modal="true" aria-label="Project details">
+  <div class="modal">
+    <button class="modal-close" aria-label="Close modal">&times;</button>
+    <h3 id="modalTitle"></h3>
+    <ul id="modalBullets"></ul>
+    <div class="still-frame">
+      <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="g1" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#1a1917"/>
+            <stop offset="50%" stop-color="#252320"/>
+            <stop offset="100%" stop-color="#1a1917"/>
+          </linearGradient>
+          <filter id="noise1">
+            <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" stitchTiles="stitch"/>
+            <feColorMatrix type="saturate" values="0"/>
+            <feBlend in="SourceGraphic" mode="multiply"/>
+          </filter>
+        </defs>
+        <rect width="100%" height="100%" fill="url(#g1)" filter="url(#noise1)"/>
+      </svg>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast" role="alert">Message received. We'll be in touch.</div>
+
+<script>
+/* ========== DATA ========== */
+const projects = [
+  {
+    title: 'The Veil Sequence',
+    bullets: ['Feature film — 98 min', 'In post-production', 'Premiering late 2025']
+  },
+  {
+    title: 'Lumen / Lacuna',
+    bullets: ['Limited series — 6 episodes', 'Currently in development', 'Seeking distribution partners']
+  },
+  {
+    title: 'Residuum',
+    bullets: ['Short film — 22 min', 'Festival circuit 2024–25', 'Official selection, 4 festivals']
+  }
+];
+
+/* ========== MODAL ========== */
+const overlay = document.getElementById('modalOverlay');
+const modalTitle = document.getElementById('modalTitle');
+const modalBullets = document.getElementById('modalBullets');
+const closeBtn = overlay.querySelector('.modal-close');
+let lastFocused = null;
+
+function openModal(index) {
+  const p = projects[index];
+  modalTitle.textContent = p.title;
+  modalBullets.innerHTML = p.bullets.map(b => `<li>${b}</li>`).join('');
+  lastFocused = document.activeElement;
+  overlay.classList.add('active');
+  closeBtn.focus();
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+  overlay.classList.remove('active');
+  document.body.style.overflow = '';
+  if (lastFocused) lastFocused.focus();
+}
+
+/* Open on details click */
+document.querySelectorAll('.details-link').forEach(btn => {
+  btn.addEventListener('click', () => openModal(parseInt(btn.dataset.modal)));
+});
+
+/* Close on X, overlay click, or ESC */
+closeBtn.addEventListener('click', closeModal);
+overlay.addEventListener('click', (e) => { if (e.target === overlay) closeModal(); });
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && overlay.classList.contains('active')) closeModal();
+});
+
+/* Focus trap inside modal */
+overlay.addEventListener('keydown', (e) => {
+  if (e.key !== 'Tab' || !overlay.classList.contains('active')) return;
+  const focusable = overlay.querySelectorAll('button, [href], [tabindex]:not([tabindex="-1"])');
+  const first = focusable[0];
+  const last = focusable[focusable.length - 1];
+  if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+  else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+});
+
+/* ========== CONTACT FORM ========== */
+const form = document.getElementById('contactForm');
+const toast = document.getElementById('toast');
+
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+  /* Basic validation */
+  const name = form.querySelector('#name').value.trim();
+  const email = form.querySelector('#email').value.trim();
+  const msg = form.querySelector('#message').value.trim();
+  if (!name || !email || !msg) return;
+
+  form.reset();
+  toast.classList.add('show');
+  setTimeout(() => toast.classList.remove('show'), 3000);
+});
+
+/* ========== THEME TOGGLE (Easter Egg) ========== */
+document.querySelector('.logo').addEventListener('click', () => {
+  document.documentElement.classList.toggle('day-mode');
+});
+document.querySelector('.logo').addEventListener('keydown', (e) => {
+  if (e.key === 'Enter' || e.key === ' ') {
+    e.preventDefault();
+    document.documentElement.classList.toggle('day-mode');
+  }
+});
+</script>
+</body>
+</html>
