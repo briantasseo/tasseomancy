@@ -189,7 +189,7 @@ export default function PitchDeck() {
       <div className={slideClass(4)}>
         <div className={s.slideContent} style={{ justifyContent: 'center', alignItems: 'center' }}>
           <h1 className={s.h1} style={{ textAlign: 'center', maxWidth: 900 }}>
-            With already committed capital, we are 100% positive that this movie will be fully produced within 2 years
+            With capital ready to go, we are 100% positive that this movie will be fully produced within 2 years
           </h1>
         </div>
       </div>
@@ -198,14 +198,14 @@ export default function PitchDeck() {
       <div className={slideClass(5)}>
         <div className={s.slideContent}>
           <h3 className={s.h3}>THE SHIFT IS HERE</h3>
-          <h2 className={s.h2} style={{ textDecoration: 'underline', textUnderlineOffset: '6px' }}>AI Changes Everything</h2>
+          <h2 className={s.h2} style={{ textDecorationSkipInk: 'none', textDecoration: 'underline', textUnderlineOffset: '6px' }}>AI Changes Everything</h2>
           <p className={s.p} style={{ marginBottom: '1rem', maxWidth: '100%' }}>
             What would have cost $50M+ to make for Bartimaeus, we can make for <span style={{ textDecoration: 'underline', textDecorationColor: 'var(--accent)', textUnderlineOffset: '4px' }}>$500k</span>
           </p>
           <div className={s.cardGrid}>
             <div className={s.card}>
               <div className={s.cardTitle}>Photorealistic Djinn</div>
-              <div className={s.cardDesc}>Shape-shifting entities rendered in cinematic quality &mdash; Bartimaeus in all his forms, from Egyptian boy to serpent to roc</div>
+              <div className={s.cardDesc}>Shape-shifting entities rendered in cinematic quality &mdash; Bartimaeus in all his forms, from Egyptian boy to serpent</div>
             </div>
             <div className={s.card}>
               <div className={s.cardTitle}>Alternate London</div>
@@ -262,7 +262,7 @@ export default function PitchDeck() {
             <li>Have raised $100M+ in equity and debt through successful institutional partnerships</li>
           </ul>
           <p className={s.tagline} style={{ textAlign: 'center', maxWidth: '100%', marginTop: '1rem', fontSize: '1.2rem' }}>
-            We&apos;ve built and scaled a tech company at the frontier of AI. We know how to execute &mdash; and we know how to get it funded.
+            We&apos;ve built and scaled a tech company at the frontier of AI. We know how to execute &mdash; and have the capital relationships to do it
           </p>
         </div>
       </div>
@@ -315,7 +315,7 @@ export default function PitchDeck() {
                 <img src="/_m/b/bartimaeus_as_ptolemy_portrait.png" alt="Bartimaeus" />
               </div>
               <div className={s.charInfo}>
-                <div className={s.charName}>Bartimaeus</div>
+                <div className={s.charName}>Bartimaeus as Ptolemy</div>
                 <div className={s.charRole}>5,000-year-old Djinni</div>
               </div>
             </div>
@@ -348,16 +348,18 @@ export default function PitchDeck() {
             </div>
           </div>
           <p className={s.tagline} style={{ textAlign: 'center', marginTop: '0.75rem', fontSize: '1.25rem', textDecoration: 'underline', textUnderlineOffset: '6px', maxWidth: '100%' }}>
-            Every image on this slide was generated entirely by AI.
+            Every image on this slide was generated entirely by AI.*
+          </p>
+          <p className={s.p} style={{ textAlign: 'center', maxWidth: '100%', fontSize: '0.9rem', marginTop: '0.5rem', color: 'var(--text-muted)' }}>
+            *we will still plan to recruit A Tier acting talent for leads
           </p>
         </div>
       </div>
 
       {/* Slide 12: Visual Potential */}
       <div className={slideClass(11)}>
-        <div className={s.slideContent} style={{ height: '100%', maxHeight: 'calc(100vh - 110px)' }}>
-          <h3 className={s.h3}>VISUAL POTENTIAL</h3>
-          <h2 className={s.h2}>A World Built for AI</h2>
+        <div className={s.slideContent} style={{ height: '100%', maxHeight: 'calc(100vh - 110px)', paddingTop: '60px' }}>
+          <h2 className={s.h2} style={{ fontSize: '2rem' }}>Our Visual Potential is off the charts for this world with AI</h2>
           <div className={s.visualGallery}>
             {/* Row 1 */}
             <div className={`${s.galleryItem} ${s.spanWide}`} data-label="Westminster — Sorcerous Power">
@@ -398,10 +400,10 @@ export default function PitchDeck() {
           <h3 className={s.h3}>AI IN ACTION</h3>
           <h2 className={s.h2}>What AI Production Looks Like Today</h2>
           <video className={s.videoEmbed} autoPlay muted loop playsInline>
-            <source src="/_m/v/ssstwitter.com_1772379510620.mp4" type="video/mp4" />
+            <source src="/_m/v/video1.mp4" type="video/mp4" />
           </video>
           <p className={s.tagline} style={{ textAlign: 'center' }}>
-            This is where AI filmmaking is now. Imagine where it will be when we start production.
+            We can make this high quality of cinema with AI right now
           </p>
         </div>
       </div>
@@ -412,7 +414,7 @@ export default function PitchDeck() {
           <h3 className={s.h3}>AI IN ACTION</h3>
           <h2 className={s.h2}>The Possibilities Are Limitless</h2>
           <video className={s.videoEmbed} autoPlay muted loop playsInline>
-            <source src="/_m/v/ssstwitter.com_1772379734232.mp4" type="video/mp4" />
+            <source src="/_m/v/video2.mp4" type="video/mp4" />
           </video>
           <p className={s.tagline} style={{ textAlign: 'center' }}>
             Cinematic quality. Zero physical production. This is the future &mdash; and it&apos;s ready now.
@@ -426,7 +428,7 @@ export default function PitchDeck() {
           <h3 className={s.h3}>AI IN ACTION</h3>
           <h2 className={s.h2}>Every World Within Reach</h2>
           <video className={s.videoEmbed} autoPlay muted loop playsInline>
-            <source src="/_m/v/ssstwitter.com_1772379382417.mp4" type="video/mp4" />
+            <source src="/_m/v/video3.mp4" type="video/mp4" />
           </video>
           <p className={s.tagline} style={{ textAlign: 'center' }}>
             Ancient Alexandria. Magical London. The Other Place. No set too ambitious, no world too complex.
@@ -467,7 +469,7 @@ export default function PitchDeck() {
           <div className={s.cardGrid}>
             <div className={s.card}>
               <div className={s.cardTitle}>Script-to-Scene</div>
-              <div className={s.cardDesc}>AI generates cinematic scenes directly from screenplay &mdash; faithful to your world-building</div>
+              <div className={s.cardDesc}>AI helps us to generate cinematic scenes directly from screenplay &mdash; faithful to your world-building</div>
             </div>
             <div className={s.card}>
               <div className={s.cardTitle}>AI Cinematography</div>
@@ -475,7 +477,7 @@ export default function PitchDeck() {
             </div>
             <div className={s.card}>
               <div className={s.cardTitle}>Digital Performance</div>
-              <div className={s.cardDesc}>Emotionally authentic AI performances guided by A-list talent direction</div>
+              <div className={s.cardDesc}>we use real acting from the leader actors and can use digital actors for the rest</div>
             </div>
             <div className={s.card}>
               <div className={s.cardTitle}>Full Post-Production</div>
@@ -498,7 +500,7 @@ export default function PitchDeck() {
                 <li><strong>Efficient Engagement</strong> &mdash; Days of direction, not months on set</li>
                 <li><strong>New Revenue Stream</strong> &mdash; Talent participates without grueling schedules</li>
               </ul>
-              <p className={s.quote}>Directors direct. Writers write. AI executes.</p>
+              <p className={s.quote}>Directors direct. Writers write. Actors Act. AI executes.</p>
             </div>
             <div className={s.targetBox}>
               <h3 className={s.targetHeading}>Who We Are Targeting</h3>
@@ -682,7 +684,7 @@ export default function PitchDeck() {
             <div className={s.statCard} style={{ padding: '2rem' }}>
               <div className={s.statNumber}>$10M+</div>
               <div className={s.statLabel} style={{ fontSize: '1.05rem', marginTop: '0.75rem' }}>
-                Committed to top-tier talent<br />Director, writers, and actors
+                Committed to top-tier talent<br />Director, writers, and leads actors
               </div>
             </div>
             <div className={s.statCard} style={{ padding: '2rem' }}>
