@@ -571,15 +571,27 @@ export default function PitchDeck() {
                   </tr>
                 </tbody>
               </table>
-              <h3 className={s.h3} style={{ fontSize: '1.1rem', marginBottom: '0.75rem', marginTop: '1.25rem' }}>Reserved Rights</h3>
-              <ul style={{ fontSize: '0.95rem', color: 'var(--text-secondary)', paddingLeft: '1.25rem', lineHeight: '1.8' }}>
-                <li>Publishing Rights</li>
-                <li>Future Literary Works</li>
-                <li>Live Stage Rights</li>
-                <li>Underlying Copyright</li>
-              </ul>
-              <h3 className={s.h3} style={{ fontSize: '1.1rem', marginBottom: '0.75rem', marginTop: '1.25rem' }}>Reversion Rights</h3>
-              <p style={{ fontSize: '0.95rem', color: 'var(--text-secondary)', lineHeight: '1.6' }}>If the movie for Book 1 is not produced within 5 years of option exercise, all rights revert to the author.</p>
+              <h3 className={s.h3} style={{ fontSize: '0.95rem', marginBottom: '0.5rem', marginTop: '1rem' }}>Reserved Rights</h3>
+              <table className={`${s.comparisonTable} ${s.compactTable}`}>
+                <tbody>
+                  <tr>
+                    <td className={s.mutedCell} style={{ width: '45%' }}>Publishing Rights</td>
+                    <td className={s.mutedCell}>Future Literary Works</td>
+                  </tr>
+                  <tr>
+                    <td className={s.mutedCell}>Live Stage Rights</td>
+                    <td className={s.mutedCell}>Underlying Copyright</td>
+                  </tr>
+                </tbody>
+              </table>
+              <h3 className={s.h3} style={{ fontSize: '0.95rem', marginBottom: '0.5rem', marginTop: '1rem' }}>Reversion Rights</h3>
+              <table className={`${s.comparisonTable} ${s.compactTable}`}>
+                <tbody>
+                  <tr>
+                    <td className={s.mutedCell}>If Movie #1 is not produced within 5 years of option exercise, all rights revert to the author</td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
             <div>
               <h3 className={s.h3} style={{ fontSize: '1.1rem', marginBottom: '0.75rem' }}>Purchase Price (Movie #1)</h3>
@@ -676,7 +688,7 @@ export default function PitchDeck() {
                 <div className={s.statLabel} style={{ fontSize: '1rem' }}>of 100% of Net Proceeds &mdash; paid pari passu with producer</div>
               </div>
               <ul className={s.arrowList}>
-                <li>&rarr; Defined no less favorably than producer&apos;s definition</li>
+                <li>&rarr; Defined no less favorably than producer&apos;s definition, no Hollywood tricks</li>
                 <li>&rarr; Standard audit rights on reasonable notice</li>
               </ul>
             </div>
@@ -712,13 +724,13 @@ export default function PitchDeck() {
             <div className={s.statCard} style={{ padding: '2rem' }}>
               <div className={s.statNumber}>$10M+</div>
               <div className={s.statLabel} style={{ fontSize: '1.05rem', marginTop: '0.75rem' }}>
-                Committed to top-tier talent<br />Director, writers, and leads actors
+                For top-tier talent<br />Director, writers, and leads actors
               </div>
             </div>
             <div className={s.statCard} style={{ padding: '2rem' }}>
-              <div className={s.statNumber}>$5M</div>
+              <div className={s.statNumber}>$5M+</div>
               <div className={s.statLabel} style={{ fontSize: '1.05rem', marginTop: '0.75rem' }}>
-                Committed to AI production costs,<br />legal, compliance, and other
+                For AI production costs,<br />legal, compliance, and other
               </div>
             </div>
           </div>
