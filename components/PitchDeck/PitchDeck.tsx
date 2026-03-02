@@ -56,6 +56,24 @@ export default function PitchDeck() {
     }
   }, [goTo])
 
+  // Lazy-load and play/pause videos based on current slide
+  useEffect(() => {
+    if (!presentationRef.current) return
+    const slides = presentationRef.current.querySelectorAll(`.${s.slide}`)
+    slides.forEach((slide, index) => {
+      const video = slide.querySelector('video[data-slide-video]') as HTMLVideoElement
+      if (!video) return
+      if (index === current) {
+        if (!video.src && video.querySelector('source')) {
+          video.src = video.querySelector('source')!.getAttribute('src')!
+        }
+        video.play()
+      } else {
+        video.pause()
+      }
+    })
+  }, [current])
+
   // Auto-scale slide content
   useEffect(() => {
     function scale() {
@@ -399,7 +417,7 @@ export default function PitchDeck() {
         <div className={s.slideContent} style={{ alignItems: 'center' }}>
           <h3 className={s.h3}>AI IN ACTION</h3>
           <h2 className={s.h2}>What AI Production Looks Like Today</h2>
-          <video className={s.videoEmbed} autoPlay muted loop playsInline>
+          <video className={s.videoEmbed} muted loop playsInline preload="none" data-slide-video>
             <source src="/_m/v/video1.mp4" type="video/mp4" />
           </video>
           <p className={s.tagline} style={{ textAlign: 'center' }}>
@@ -413,7 +431,7 @@ export default function PitchDeck() {
         <div className={s.slideContent} style={{ alignItems: 'center' }}>
           <h3 className={s.h3}>AI IN ACTION</h3>
           <h2 className={s.h2}>The Possibilities Are Limitless</h2>
-          <video className={s.videoEmbed} autoPlay muted loop playsInline>
+          <video className={s.videoEmbed} muted loop playsInline preload="none" data-slide-video>
             <source src="/_m/v/video2.mp4" type="video/mp4" />
           </video>
           <p className={s.tagline} style={{ textAlign: 'center' }}>
@@ -427,7 +445,7 @@ export default function PitchDeck() {
         <div className={s.slideContent} style={{ alignItems: 'center' }}>
           <h3 className={s.h3}>AI IN ACTION</h3>
           <h2 className={s.h2}>Every World Within Reach</h2>
-          <video className={s.videoEmbed} autoPlay muted loop playsInline>
+          <video className={s.videoEmbed} muted loop playsInline preload="none" data-slide-video>
             <source src="/_m/v/video3.mp4" type="video/mp4" />
           </video>
           <p className={s.tagline} style={{ textAlign: 'center' }}>
@@ -756,7 +774,7 @@ export default function PitchDeck() {
             </div>
           </div>
           <p className={s.tagline} style={{ textAlign: 'center', maxWidth: '100%', marginTop: '1rem', fontSize: '1.15rem' }}>
-            This is just Book 1. With three sequels and a prequel, the total upside across the full series is significantly greater.
+            This is just Book 1. With four books, the total upside across the full series is significantly greater.
           </p>
         </div>
       </div>
