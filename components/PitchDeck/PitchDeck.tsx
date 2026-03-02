@@ -475,7 +475,7 @@ export default function PitchDeck() {
             <div className={s.pipelineStep}>
               <div className={s.pipelineStepNumber}>3</div>
               <div className={s.pipelineStepTitle}>Produce</div>
-              <div className={s.pipelineStepDesc}>AI handles all production</div>
+              <div className={s.pipelineStepDesc}>We produce the movie with the help of AI</div>
             </div>
             <div className={s.pipelineArrow}>&rarr;</div>
             <div className={s.pipelineStep}>
@@ -495,7 +495,7 @@ export default function PitchDeck() {
             </div>
             <div className={s.card}>
               <div className={s.cardTitle}>Digital Performance</div>
-              <div className={s.cardDesc}>we use real acting from the leader actors and can use digital actors for the rest</div>
+              <div className={s.cardDesc}>We use real acting from the lead actors and can use digital actors for the rest</div>
             </div>
             <div className={s.card}>
               <div className={s.cardTitle}>Full Post-Production</div>
