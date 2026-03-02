@@ -569,27 +569,11 @@ export default function PitchDeck() {
                     <td className={s.mutedCell}>Extension Fee</td>
                     <td style={{ fontSize: '1rem' }}><strong>$80K</strong> (non-creditable)</td>
                   </tr>
-                </tbody>
-              </table>
-              <h3 className={s.h3} style={{ fontSize: '0.95rem', marginBottom: '0.5rem', marginTop: '1rem' }}>Reserved Rights</h3>
-              <table className={`${s.comparisonTable} ${s.compactTable}`}>
-                <tbody>
                   <tr>
-                    <td className={s.mutedCell} style={{ width: '45%' }}>Publishing Rights</td>
-                    <td className={s.mutedCell}>Future Literary Works</td>
+                    <td className={s.mutedCell}>Reserved Rights</td>
+                    <td style={{ fontSize: '1rem' }}>Publishing Rights, Future Literary Works, Live Stage Rights, Underlying Copyright</td>
                   </tr>
-                  <tr>
-                    <td className={s.mutedCell}>Live Stage Rights</td>
-                    <td className={s.mutedCell}>Underlying Copyright</td>
-                  </tr>
-                </tbody>
-              </table>
-              <h3 className={s.h3} style={{ fontSize: '0.95rem', marginBottom: '0.5rem', marginTop: '1rem' }}>Reversion Rights</h3>
-              <table className={`${s.comparisonTable} ${s.compactTable}`}>
-                <tbody>
-                  <tr>
-                    <td className={s.mutedCell}>If Movie #1 is not produced within 5 years of option exercise, all rights revert to the author</td>
-                  </tr>
+
                 </tbody>
               </table>
             </div>
@@ -730,7 +714,7 @@ export default function PitchDeck() {
             <div className={s.statCard} style={{ padding: '2rem' }}>
               <div className={s.statNumber}>$5M+</div>
               <div className={s.statLabel} style={{ fontSize: '1.05rem', marginTop: '0.75rem' }}>
-                For AI production costs,<br />legal, compliance, and other
+                For AI production costs,<br />legal, compliance, lien, and other
               </div>
             </div>
           </div>
