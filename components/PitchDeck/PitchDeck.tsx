@@ -551,7 +551,7 @@ export default function PitchDeck() {
                 <tbody>
                   <tr>
                     <td className={s.mutedCell} style={{ width: '45%' }}>Structure</td>
-                    <td style={{ fontSize: '1rem' }}>Exclusive option for Book 1 + exclusive sequel purchase rights for Books 2&ndash;4</td>
+                    <td style={{ fontSize: '1rem' }}>Exclusive option for all rights for entire book series other than Reserved Rights</td>
                   </tr>
                   <tr>
                     <td className={s.mutedCell}>Initial Term</td>
@@ -559,7 +559,7 @@ export default function PitchDeck() {
                   </tr>
                   <tr>
                     <td className={s.mutedCell}>Paid Extension</td>
-                    <td style={{ fontSize: '1rem' }}><strong>12 months</strong> (30-month total cap)</td>
+                    <td style={{ fontSize: '1rem' }}><strong>18 months</strong> (36-month total cap)</td>
                   </tr>
                   <tr>
                     <td className={s.mutedCell}>Option Fee (signing)</td>
@@ -571,6 +571,15 @@ export default function PitchDeck() {
                   </tr>
                 </tbody>
               </table>
+              <h3 className={s.h3} style={{ fontSize: '1.1rem', marginBottom: '0.75rem', marginTop: '1.25rem' }}>Reserved Rights</h3>
+              <ul style={{ fontSize: '0.95rem', color: 'var(--text-secondary)', paddingLeft: '1.25rem', lineHeight: '1.8' }}>
+                <li>Publishing Rights</li>
+                <li>Future Literary Works</li>
+                <li>Live Stage Rights</li>
+                <li>Underlying Copyright</li>
+              </ul>
+              <h3 className={s.h3} style={{ fontSize: '1.1rem', marginBottom: '0.75rem', marginTop: '1.25rem' }}>Reversion Rights</h3>
+              <p style={{ fontSize: '0.95rem', color: 'var(--text-secondary)', lineHeight: '1.6' }}>If the movie for Book 1 is not produced within 5 years of option exercise, all rights revert to the author.</p>
             </div>
             <div>
               <h3 className={s.h3} style={{ fontSize: '1.1rem', marginBottom: '0.75rem' }}>Purchase Price (Movie #1)</h3>
@@ -581,7 +590,7 @@ export default function PitchDeck() {
                     <td style={{ fontSize: '1rem' }}><strong className={s.highlight}>$1.25M</strong></td>
                   </tr>
                   <tr>
-                    <td className={s.mutedCell}>Lien Payback</td>
+                    <td className={s.mutedCell}>Lien Payback*</td>
                     <td style={{ fontSize: '1rem' }}><strong>$2.2M</strong></td>
                   </tr>
                   <tr className={s.highlightRow}>
@@ -598,6 +607,7 @@ export default function PitchDeck() {
                   </tr>
                 </tbody>
               </table>
+              <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)', marginTop: '0.75rem' }}>*Paid at time of production out of movie budget</p>
             </div>
           </div>
         </div>
@@ -623,7 +633,7 @@ export default function PitchDeck() {
                   <strong>Movie #2</strong><br />
                   <span style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>The Golem&apos;s Eye</span>
                 </td>
-                <td style={{ fontSize: '1rem' }}><strong className={s.highlight}>50&ndash;60%</strong> of Movie #1 price</td>
+                <td style={{ fontSize: '1rem' }}><strong className={s.highlight}>$1M</strong></td>
                 <td style={{ fontSize: '1rem' }}><strong>10% of Net Profit</strong></td>
                 <td style={{ fontSize: '0.9rem' }}>24 mo. after Movie #1 release</td>
               </tr>
@@ -632,7 +642,7 @@ export default function PitchDeck() {
                   <strong>Movie #3</strong><br />
                   <span style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>Ptolemy&apos;s Gate</span>
                 </td>
-                <td style={{ fontSize: '1rem' }}><strong className={s.highlight}>60&ndash;70%</strong> of Movie #1 price</td>
+                <td style={{ fontSize: '1rem' }}><strong className={s.highlight}>$1M</strong></td>
                 <td style={{ fontSize: '1rem' }}><strong>10% of Net Profit</strong></td>
                 <td style={{ fontSize: '0.9rem' }}>18 mo. after Movie #2 exercise</td>
               </tr>
@@ -641,7 +651,7 @@ export default function PitchDeck() {
                   <strong>Movie #4</strong><br />
                   <span style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>The Ring of Solomon</span>
                 </td>
-                <td style={{ fontSize: '1rem' }}><strong className={s.highlight}>60&ndash;70%</strong> of Movie #1 price</td>
+                <td style={{ fontSize: '1rem' }}><strong className={s.highlight}>$1M</strong></td>
                 <td style={{ fontSize: '1rem' }}><strong>10% of Net Profit</strong></td>
                 <td style={{ fontSize: '0.9rem' }}>18 mo. after Movie #3 exercise</td>
               </tr>
