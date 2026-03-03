@@ -207,7 +207,7 @@ export default function PitchDeck() {
       <div className={slideClass(4)}>
         <div className={s.slideContent} style={{ justifyContent: 'center', alignItems: 'center' }}>
           <h1 className={s.h1} style={{ textAlign: 'center', maxWidth: 900 }}>
-            With capital ready to go, we are 100% positive that this movie will be fully produced within 2 years
+            With capital ready to go, we are 100% positive that this movie will be fully produced
           </h1>
         </div>
       </div>
