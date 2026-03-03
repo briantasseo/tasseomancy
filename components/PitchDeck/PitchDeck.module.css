@@ -741,7 +741,7 @@
   color: var(--text-secondary);
 }
 
-/* Responsive */
+/* Responsive — Tablet */
 @media (max-width: 1024px) {
   .slide {
     padding: 40px;
@@ -753,4 +753,120 @@
   .twoCol { grid-template-columns: 1fr; gap: 2rem; }
   .pipeline { flex-direction: column; gap: 1rem; }
   .pipelineArrow { transform: rotate(90deg); }
+  .characterShowcase { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .visualGallery { grid-template-columns: repeat(3, 1fr); grid-template-rows: auto; }
+  .spanWide { grid-column: span 1; }
+  .foundersRow { gap: 2rem; }
+  .founderPhoto { width: 120px; height: 120px; }
+  .timeline { flex-wrap: wrap; gap: 1rem; }
+  .timeline::before { display: none; }
+  .timelineItem { flex: 0 0 45%; }
+}
+
+/* Responsive — Mobile */
+@media (max-width: 640px) {
+  .presentation {
+    overflow-y: hidden;
+    overflow-x: hidden;
+  }
+
+  .slide {
+    padding: 60px 20px 20px;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .slideContent {
+    max-width: 100%;
+  }
+
+  /* Typography */
+  .h1 { font-size: 2rem; }
+  .h2 { font-size: 1.5rem; margin-bottom: 0.75rem; }
+  .h3 { font-size: 1rem; margin-bottom: 0.5rem; }
+  .p { font-size: 1rem; }
+  .subtitle { font-size: 1.1rem; }
+  .tagline { font-size: 1.1rem; margin-top: 1rem; }
+
+  /* Title slide */
+  .titleSlide .h1 { font-size: 2.5rem; }
+  .titleSlide .subtitle { font-size: 1.15rem; }
+
+  /* Stats */
+  .statsGrid { grid-template-columns: 1fr; gap: 0.75rem; }
+  .statCard { padding: 1rem; }
+  .statNumber { font-size: 2rem; }
+  .statLabel { font-size: 0.85rem; }
+
+  /* Two column → single column */
+  .twoCol { grid-template-columns: 1fr; gap: 1rem; }
+
+  /* Cards */
+  .cardGrid { grid-template-columns: 1fr; gap: 0.75rem; }
+  .card { padding: 1rem; }
+  .cardDesc { font-size: 0.85rem; }
+
+  /* Pipeline */
+  .pipeline { flex-direction: column; gap: 0.75rem; padding: 1rem; }
+  .pipelineArrow { transform: rotate(90deg); font-size: 1rem; padding: 0; }
+  .pipelineStepNumber { width: 36px; height: 36px; font-size: 1rem; margin-bottom: 0.5rem; }
+
+  /* Timeline */
+  .timeline { flex-direction: column; gap: 1.25rem; margin: 1.5rem 0; }
+  .timeline::before { display: none; }
+  .timelineItem { flex: none; text-align: left; padding: 0; display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; }
+  .timelineDot { margin: 0; width: 10px; height: 10px; flex-shrink: 0; }
+  .timelineYear { font-size: 1.1rem; margin-bottom: 0; }
+  .timelineDesc { font-size: 0.85rem; flex-basis: 100%; padding-left: 22px; }
+  .timelineStatus { margin-top: 0; margin-left: 22px; }
+
+  /* Tables */
+  .comparisonTable th,
+  .comparisonTable td { padding: 0.6rem 0.75rem; font-size: 0.85rem; }
+  .compactTable td { font-size: 0.85rem; }
+  .mutedCell { font-size: 0.85rem; }
+  .rightCell { font-size: 0.85rem; }
+
+  /* Character Showcase */
+  .characterShowcase { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .charName { font-size: 0.9rem; }
+  .charRole { font-size: 0.7rem; }
+  .charInfo { padding: 8px 10px; }
+
+  /* Visual Gallery */
+  .visualGallery { grid-template-columns: repeat(2, 1fr); grid-template-rows: auto; gap: 6px; }
+  .spanWide { grid-column: span 2; }
+
+  /* Founders */
+  .foundersRow { flex-direction: column; gap: 1.5rem; align-items: center; }
+  .founderPhoto { width: 100px; height: 100px; }
+  .founderName { font-size: 1.1rem; }
+  .founderBullets li { font-size: 0.85rem; }
+
+  /* Navigation */
+  .nav {
+    top: 10px;
+    right: 10px;
+    padding: 0.35rem 0.75rem;
+    gap: 0.5rem;
+  }
+  .navBtn { width: 30px; height: 30px; font-size: 0.85rem; }
+  .slideCounter { font-size: 0.75rem; min-width: 40px; }
+
+  /* Logo */
+  .logo { top: 14px; left: 16px; font-size: 0.9rem; }
+
+  /* Video */
+  .videoEmbed { max-height: 40vh; border-radius: 10px; }
+
+  /* Quote */
+  .quote { font-size: 1.1rem; padding-left: 1.25rem; }
+
+  /* Target box */
+  .targetBox { padding: 1rem; }
+  .targetRoleName { font-size: 0.95rem; }
+  .targetRoleActors { font-size: 0.85rem; }
+
+  /* Feature list */
+  .featureList li { font-size: 0.95rem; padding: 0.5rem 0; padding-left: 1.5rem; }
 }
