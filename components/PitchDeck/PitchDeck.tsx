@@ -64,10 +64,12 @@ export default function PitchDeck() {
       const video = slide.querySelector('video[data-slide-video]') as HTMLVideoElement
       if (!video) return
       if (index === current) {
-        if (!video.src && video.querySelector('source')) {
-          video.src = video.querySelector('source')!.getAttribute('src')!
+        const source = video.querySelector('source')
+        if (source && video.getAttribute('src') === null) {
+          video.src = source.getAttribute('src')!
+          video.load()
         }
-        video.play()
+        video.play().catch(() => {})
       } else {
         video.pause()
       }
