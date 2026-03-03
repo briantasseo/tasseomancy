@@ -68,8 +68,10 @@ export default function PitchDeck() {
         if (source && video.getAttribute('src') === null) {
           video.src = source.getAttribute('src')!
           video.load()
+          video.addEventListener('canplay', () => { video.play().catch(() => {}) }, { once: true })
+        } else {
+          video.play().catch(() => {})
         }
-        video.play().catch(() => {})
       } else {
         video.pause()
       }
