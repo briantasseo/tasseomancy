@@ -154,8 +154,8 @@ export default function PitchDeck() {
             <div className={s.timelineItem}>
               <div className={`${s.timelineDot} ${s.timelineDotFaded}`} />
               <div className={`${s.timelineYear} ${s.timelineYearFaded}`}>2002</div>
-              <div className={s.timelineDesc}>Miramax acquires film rights as their &ldquo;next Lord of the Rings&rdquo;</div>
-              <span className={`${s.timelineStatus} ${s.timelineStatusFailed}`}>Rights Lapsed</span>
+              <div className={s.timelineDesc}>Miramax acquires film rights</div>
+              <span className={`${s.timelineStatus} ${s.timelineStatusFailed}`}>Development Limbo</span>
             </div>
             <div className={s.timelineItem}>
               <div className={`${s.timelineDot} ${s.timelineDotFaded}`} />
@@ -193,7 +193,7 @@ export default function PitchDeck() {
               <div className={s.statLabel}>Average Feature Film Budget</div>
             </div>
             <div className={s.statCard}>
-              <div className={s.statNumber}>5+ yrs</div>
+              <div className={s.statNumber}>2.5-5+ yrs</div>
               <div className={s.statLabel}>Average Development Time</div>
             </div>
           </div>
@@ -218,7 +218,7 @@ export default function PitchDeck() {
           <h3 className={s.h3}>THE SHIFT IS HERE</h3>
           <h2 className={s.h2} style={{ textDecorationSkipInk: 'none', textDecoration: 'underline', textUnderlineOffset: '6px' }}>AI Changes Everything</h2>
           <p className={s.p} style={{ marginBottom: '1rem', maxWidth: '100%' }}>
-            What would have cost $50M+ to make for Bartimaeus, we can make for <span style={{ textDecoration: 'underline', textDecorationColor: 'var(--accent)', textUnderlineOffset: '4px' }}>$500k</span>
+            The effects which would have cost $50M+ to make for Bartimaeus, we can make for <span style={{ textDecoration: 'underline', textDecorationColor: 'var(--accent)', textUnderlineOffset: '4px' }}>$500k</span>
           </p>
           <div className={s.cardGrid}>
             <div className={s.card}>
@@ -779,8 +779,9 @@ export default function PitchDeck() {
               </div>
             </div>
           </div>
-          <p className={s.tagline} style={{ textAlign: 'center', maxWidth: '100%', marginTop: '1rem', fontSize: '1.15rem' }}>
-            This is just Book 1. With four books, the total upside across the full series is significantly greater.
+          <p className={s.tagline} style={{ textAlign: 'center', maxWidth: '100%', marginTop: '0.75rem', fontSize: '1.1rem', lineHeight: '1.6' }}>
+            This is just Book 1. With four books, the total upside across the full series is significantly greater.<br />
+            <span style={{ fontSize: '0.95rem', color: 'var(--text-secondary)' }}>Reminder &mdash; our net profit definition is your net profit definition. If you don&apos;t make money, we don&apos;t make money.</span>
           </p>
         </div>
       </div>
