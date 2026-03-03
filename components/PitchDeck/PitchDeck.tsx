@@ -56,7 +56,7 @@ export default function PitchDeck() {
     }
   }, [goTo])
 
-  // Lazy-load and play/pause videos based on current slide
+  // Play/pause videos based on current slide
   useEffect(() => {
     if (!presentationRef.current) return
     const slides = presentationRef.current.querySelectorAll(`.${s.slide}`)
@@ -64,14 +64,7 @@ export default function PitchDeck() {
       const video = slide.querySelector('video[data-slide-video]') as HTMLVideoElement
       if (!video) return
       if (index === current) {
-        const source = video.querySelector('source')
-        if (source && video.getAttribute('src') === null) {
-          video.src = source.getAttribute('src')!
-          video.load()
-          video.addEventListener('canplay', () => { video.play().catch(() => {}) }, { once: true })
-        } else {
-          video.play().catch(() => {})
-        }
+        video.play().catch(() => {})
       } else {
         video.pause()
       }
@@ -421,9 +414,7 @@ export default function PitchDeck() {
         <div className={s.slideContent} style={{ alignItems: 'center' }}>
           <h3 className={s.h3}>AI IN ACTION</h3>
           <h2 className={s.h2}>What AI Production Looks Like Today</h2>
-          <video className={s.videoEmbed} muted loop playsInline preload="none" data-slide-video>
-            <source src="/_m/v/video1.mp4" type="video/mp4" />
-          </video>
+          <video className={s.videoEmbed} muted loop playsInline preload="metadata" data-slide-video src="/_m/v/video1.mp4" />
           <p className={s.tagline} style={{ textAlign: 'center' }}>
             We can make this high quality of cinema with AI right now
           </p>
@@ -435,9 +426,7 @@ export default function PitchDeck() {
         <div className={s.slideContent} style={{ alignItems: 'center' }}>
           <h3 className={s.h3}>AI IN ACTION</h3>
           <h2 className={s.h2}>The Possibilities Are Limitless</h2>
-          <video className={s.videoEmbed} muted loop playsInline preload="none" data-slide-video>
-            <source src="/_m/v/video2.mp4" type="video/mp4" />
-          </video>
+          <video className={s.videoEmbed} muted loop playsInline preload="metadata" data-slide-video src="/_m/v/video2.mp4" />
           <p className={s.tagline} style={{ textAlign: 'center' }}>
             Cinematic quality. Zero physical production. This is the future &mdash; and it&apos;s ready now.
           </p>
@@ -449,9 +438,7 @@ export default function PitchDeck() {
         <div className={s.slideContent} style={{ alignItems: 'center' }}>
           <h3 className={s.h3}>AI IN ACTION</h3>
           <h2 className={s.h2}>Every World Within Reach</h2>
-          <video className={s.videoEmbed} muted loop playsInline preload="none" data-slide-video>
-            <source src="/_m/v/video3.mp4" type="video/mp4" />
-          </video>
+          <video className={s.videoEmbed} muted loop playsInline preload="metadata" data-slide-video src="/_m/v/video3.mp4" />
           <p className={s.tagline} style={{ textAlign: 'center' }}>
             Ancient Alexandria. Magical London. The Other Place. No set too ambitious, no world too complex.
           </p>
