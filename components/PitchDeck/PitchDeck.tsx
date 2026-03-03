@@ -9,16 +9,34 @@ const TOTAL_SLIDES = 23
 export default function PitchDeck() {
   const [current, setCurrent] = useState(0)
   const presentationRef = useRef<HTMLDivElement>(null)
+  const currentRef = useRef(0)
+
+  // Play/pause videos for a given slide index — called directly from gesture handlers
+  const syncVideos = useCallback((slideIndex: number) => {
+    if (!presentationRef.current) return
+    const slides = presentationRef.current.querySelectorAll(`.${s.slide}`)
+    slides.forEach((slide, index) => {
+      const video = slide.querySelector('video[data-slide-video]') as HTMLVideoElement
+      if (!video) return
+      if (index === slideIndex) {
+        video.play().catch(() => {})
+      } else {
+        video.pause()
+      }
+    })
+  }, [])
 
   const goTo = useCallback(
     (direction: 'next' | 'prev') => {
-      setCurrent((c) => {
-        if (direction === 'next' && c < TOTAL_SLIDES - 1) return c + 1
-        if (direction === 'prev' && c > 0) return c - 1
-        return c
-      })
+      let next = currentRef.current
+      if (direction === 'next' && next < TOTAL_SLIDES - 1) next = next + 1
+      else if (direction === 'prev' && next > 0) next = next - 1
+      currentRef.current = next
+      setCurrent(next)
+      // Call play() synchronously within the user gesture call stack (required by iOS Safari)
+      syncVideos(next)
     },
-    []
+    [syncVideos]
   )
 
   // Keyboard navigation
@@ -55,21 +73,6 @@ export default function PitchDeck() {
       document.removeEventListener('touchend', onEnd)
     }
   }, [goTo])
-
-  // Play/pause videos based on current slide
-  useEffect(() => {
-    if (!presentationRef.current) return
-    const slides = presentationRef.current.querySelectorAll(`.${s.slide}`)
-    slides.forEach((slide, index) => {
-      const video = slide.querySelector('video[data-slide-video]') as HTMLVideoElement
-      if (!video) return
-      if (index === current) {
-        video.play().catch(() => {})
-      } else {
-        video.pause()
-      }
-    })
-  }, [current])
 
   // Auto-scale slide content
   useEffect(() => {
