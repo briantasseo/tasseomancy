@@ -11,21 +11,6 @@ export default function PitchDeck() {
   const presentationRef = useRef<HTMLDivElement>(null)
   const currentRef = useRef(0)
 
-  // Play/pause videos for a given slide index — called directly from gesture handlers
-  const syncVideos = useCallback((slideIndex: number) => {
-    if (!presentationRef.current) return
-    const slides = presentationRef.current.querySelectorAll(`.${s.slide}`)
-    slides.forEach((slide, index) => {
-      const video = slide.querySelector('video[data-slide-video]') as HTMLVideoElement
-      if (!video) return
-      if (index === slideIndex) {
-        video.play().catch(() => {})
-      } else {
-        video.pause()
-      }
-    })
-  }, [])
-
   const goTo = useCallback(
     (direction: 'next' | 'prev') => {
       let next = currentRef.current
@@ -33,10 +18,16 @@ export default function PitchDeck() {
       else if (direction === 'prev' && next > 0) next = next - 1
       currentRef.current = next
       setCurrent(next)
-      // Call play() synchronously within the user gesture call stack (required by iOS Safari)
-      syncVideos(next)
+      // Pause all videos and reset play buttons when navigating
+      if (presentationRef.current) {
+        presentationRef.current.querySelectorAll(`.${s.videoWrap}`).forEach((wrap) => {
+          const v = wrap.querySelector('video') as HTMLVideoElement
+          if (v) v.pause()
+          wrap.classList.remove(s.videoPlaying)
+        })
+      }
     },
-    [syncVideos]
+    []
   )
 
   // Keyboard navigation
