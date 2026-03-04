@@ -4,7 +4,7 @@ import { useState, FormEvent } from 'react'
 import { useRouter } from 'next/navigation'
 import styles from './DeckAuth.module.css'
 
-export default function DeckAuth() {
+export default function DeckAuth({ authEndpoint = '/api/deck-auth' }: { authEndpoint?: string } = {}) {
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
@@ -16,7 +16,7 @@ export default function DeckAuth() {
     setLoading(true)
 
     try {
-      const res = await fetch('/api/deck-auth', {
+      const res = await fetch(authEndpoint, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ password }),
