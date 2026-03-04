@@ -248,15 +248,15 @@ export default function AAPitchDeck() {
           <div className={s.cardGrid}>
             <div className={s.card}>
               <div className={s.cardTitle}>Film 1: Assassin&apos;s Apprentice</div>
-              <div className={s.cardDesc}>A royal bastard raised in secret, trained as an assassin, bonded to a wolf &mdash; while a conspiracy of Red Ship Raiders threatens the Six Duchies. Coming-of-age / political thriller.</div>
+              <div className={s.cardDesc}>A royal bastard raised as an outcast, secretly trained as an assassin, and gifted with a forbidden magic that bonds him to animals &mdash; while Red Ship Raiders begin turning coastal villagers into soulless husks and a conspiracy within the royal family threatens to tear the Six Duchies apart. Coming-of-age / political thriller.</div>
             </div>
             <div className={s.card}>
               <div className={s.cardTitle}>Film 2: Royal Assassin</div>
-              <div className={s.cardDesc}>Fitz returns to Buckkeep as the kingdom fractures. Prince Regal schemes for the throne while the Red Ships turn coastal villagers into mindless Forged ones. Betrayal / siege.</div>
+              <div className={s.cardDesc}>Fitz returns from the Mountain Kingdom to a fracturing Buckkeep. Prince Regal schemes for the throne, the Red Ships escalate their Forging of entire villages, and Fitz bonds with a wolf named Nighteyes &mdash; the one relationship that will define him. It ends with Fitz betrayed, executed, and dragged back from death itself. Betrayal / siege.</div>
             </div>
             <div className={s.card} style={{ gridColumn: '1 / -1', maxWidth: '50%', justifySelf: 'center' }}>
               <div className={s.cardTitle}>Film 3: Assassin&apos;s Quest</div>
-              <div className={s.cardDesc}>Left for dead, Fitz embarks on an epic journey to find King Verity and the legendary stone dragons. A quest across the wilderness to save everything he loves.</div>
+              <div className={s.cardDesc}>Resurrected but broken &mdash; having lived feral as a wolf &mdash; Fitz claws back his humanity and embarks on an epic journey across the wilderness to find the lost King Verity and the legendary stone dragons. A quest to save everything he loves, at the cost of everything he is.</div>
             </div>
           </div>
         </div>
